@@ -9,6 +9,8 @@
 
 <br/>
 
+## About
+This package provides an `ssh-agent` initialiser, including both management of the `ssh-agent` process itself as well as auto-loading of discovered ssh private keys.
 
 ## Install
 
@@ -19,9 +21,7 @@ $ omf install ssh-agent
 
 ## Usage
 
-```fish
-$ ssh-agent
-```
+Customise the variable `key_set` in `init.fish` to suit your ssh key file naming convention.
 
 
 # License
