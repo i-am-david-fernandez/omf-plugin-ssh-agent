@@ -24,7 +24,7 @@ end
 
 if test -e $ssh_environment
     . $ssh_environment > /dev/null
-    if not ps -ef | grep $SSH_AGENT_PID | grep "ssh-agent\$" > /dev/null
+    if not ps -ef | grep $SSH_AGENT_PID | grep (which ssh-agent) > /dev/null
         echo-info --warning "ssh-agent environment is stale."
         _iadf_start_ssh_agent
     end
