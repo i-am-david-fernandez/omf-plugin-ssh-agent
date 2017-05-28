@@ -5,7 +5,7 @@
 # * $path          package path
 # * $dependencies  package dependencies
 
-set -g ssh_environment $HOME/.ssh/environment
+set -g ssh_environment $HOME/.ssh/environment.csh
 
 function _iadf_start_ssh_agent
     echo-info --major "Initialising ssh-agent..."
