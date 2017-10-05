@@ -22,12 +22,17 @@ function _iadf_start_ssh_agent
     end
 end
 
-if test -e $ssh_environment
-    . $ssh_environment > /dev/null
-    if not ps -ef | grep $SSH_AGENT_PID | grep (which ssh-agent) > /dev/null
-        echo-info --warning "ssh-agent environment is stale."
-        _iadf_start_ssh_agent
-    end
+which ssh-agent > /dev/null ^&1
+if test $status -eq 0
+  if test -e $ssh_environment
+      . $ssh_environment > /dev/null
+      if not ps -ef | grep $SSH_AGENT_PID | grep (which ssh-agent) > /dev/null
+          echo-info --warning "ssh-agent environment is stale."
+          _iadf_start_ssh_agent
+      end
+  else
+      _iadf_start_ssh_agent
+  end
 else
-    _iadf_start_ssh_agent
+  echo-info --warning "Not initialising ssh-agent (ssh-agent not found in path)."
 end
